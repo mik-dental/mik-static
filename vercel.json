@@ -17,6 +17,11 @@
       "source": "/torque.html",
       "destination": "/torque",
       "permanent": true
+    },
+    {
+      "source": "/bi-mode-jet.html",
+      "destination": "/bi-mode-jet",
+      "permanent": true
     }
   ],
   "headers": [
