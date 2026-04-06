@@ -67,15 +67,408 @@
         z-index: 50;
         display: flex;
         justify-content: center;
+        padding: 12px 0;
+        background-color: transparent;
+        transition: background-color 0.32s ease;
+      }
+
+      .bi-mode-jet-page .bi-mode-jet-nav-section.is-scrolled {
+        background-color: #19253c;
       }
 
       .bi-mode-jet-page .bi-mode-jet-hero {
         margin-top: 0;
       }
 
+      .bi-mode-jet-page .bi-mode-jet-compare-tabs {
+        display: none;
+      }
+
       @media screen and (max-width: 767px) {
+        .bi-mode-jet-page .bi-mode-jet-nav-section {
+          min-height: 65px;
+          padding: 0;
+          align-items: center;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-nav {
+          width: calc(100vw - 32px);
+          height: 65px;
+          min-height: 65px;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          gap: 12px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-nav-actions {
+          width: auto;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+          flex-shrink: 0;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-nav-actions .bi-mode-jet-pill {
+          width: auto;
+          min-width: 94px;
+          height: 37px;
+          min-height: 37px;
+          padding: 8px 10px;
+          border-width: 1px;
+          border-radius: 100px;
+          gap: 10px;
+          font-size: 14px;
+          line-height: 1;
+          white-space: nowrap;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-nav-actions .bi-mode-jet-pill-outline {
+          min-width: 104px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-credit,
+        .bi-mode-jet-page .bi-mode-jet-hero-doctor,
+        .bi-mode-jet-page .bi-mode-jet-animation {
+          display: none;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-story-cards {
+          gap: 20px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-story-card,
+        .bi-mode-jet-page .bi-mode-jet-story-card-left,
+        .bi-mode-jet-page .bi-mode-jet-story-card-right {
+          width: 100%;
+          box-sizing: border-box;
+          min-height: 389px;
+          grid-template-columns: 1fr;
+          gap: 20px;
+          margin: 0;
+          border: 0.34px solid rgba(255, 255, 255, 0.14);
+          border-radius: 8.06px;
+          padding-bottom: 20px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-story-card-copy {
+          order: 2;
+          padding: 0 20px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-story-card-media {
+          order: 1;
+          min-height: 220px;
+          height: 220px;
+        }
+
+        .bi-mode-jet-page
+          .bi-mode-jet-indication-row-reverse
+          .bi-mode-jet-indication-copy {
+          order: 1;
+        }
+
+        .bi-mode-jet-page
+          .bi-mode-jet-indication-row-reverse
+          .bi-mode-jet-indication-media {
+          order: 2;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-benefits-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-benefit-card {
+          width: 100%;
+          min-height: 132px;
+          height: 132px;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          gap: 27px;
+          padding: 20px;
+          border: 1px solid #2e436a;
+          border-radius: 8px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-benefit-card h3 {
+          font-family: Geist, Inter, Arial, sans-serif;
+          font-size: 20px;
+          font-weight: 600;
+          line-height: 1.3;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-benefit-card p {
+          margin: 0;
+          font-family: Geist, Inter, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-kaunsa-card {
+          width: 100%;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          padding: 16px;
+          border: 1px solid #dbdbdb;
+          border-radius: 6px;
+          background: #fff;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-kaunsa-card p,
+        .bi-mode-jet-page .bi-mode-jet-kaunsa-card p + p {
+          margin: 0;
+          color: #19253c;
+          font-family: Geist, Inter, Arial, sans-serif;
+          font-size: 20px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-kaunsa-card a {
+          color: #0051ec;
+          text-decoration: underline;
+          text-underline-offset: 1px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-contact {
+          padding-top: 72px;
+          padding-bottom: 72px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-contact-card {
+          min-height: 280px;
+          padding: 24px 20px;
+          padding-bottom: 0;
+          background: #213250;
+          border-radius: 5px;
+          overflow: visible;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-contact-copy {
+          max-width: 237px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-contact-copy h2 {
+          font-size: 28px;
+          font-weight: 600;
+          line-height: 1.1;
+          background-image: linear-gradient(90deg, #ffffff 0%, #1b273e 95.8%);
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-contact-copy p {
+          margin-top: 12px;
+          color: #fff;
+          font-family: Geist, Inter, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-contact-copy .bi-mode-jet-pill {
+          min-height: 0;
+          margin-top: 32px;
+          padding: 6px 12px;
+          background: #fff;
+          color: #0a0a0a;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.5;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-contact-image {
+          position: absolute;
+          right: -42px;
+          bottom: 0;
+          width: 232px;
+          margin: 0;
+          z-index: 4;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-footer {
+          min-height: 240px;
+          padding-top: 44px;
+          padding-bottom: 32px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-footer-inner {
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-footer-address {
+          font-size: 10px;
+          line-height: 1.5;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-footer-links {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: space-between;
+          flex-wrap: nowrap;
+          gap: 0;
+          min-height: 62px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-footer-links button {
+          padding: 0;
+          font-size: 10px;
+          line-height: 1.5;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-footer-links img {
+          display: none;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-footer-logo {
+          bottom: 26px;
+          width: 67px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-tabs {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-top: 24px;
+          padding: 8px 12px;
+          background: #fff;
+          border: 1px solid #19253c;
+          border-radius: 4px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-tab {
+          flex: 1 1 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 40px;
+          padding: 10px 16px;
+          border: 0;
+          border-radius: 6px;
+          background: transparent;
+          color: #19253c;
+          font-family: Geist, Inter, Arial, sans-serif;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1;
+          text-align: center;
+          transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-tab.is-active {
+          background: #19253c;
+          color: #fff;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-table {
+          grid-template-columns: 156px minmax(0, 1fr);
+          gap: 20px;
+          margin-top: 16px;
+          padding: 12px;
+          align-items: start;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-col {
+          min-height: 0;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-col h3 {
+          font-size: 16px;
+          line-height: 1.2;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-col ul {
+          margin-top: 24px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-col li {
+          align-items: flex-start;
+          font-size: 14px;
+          line-height: 1.3;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-col-labels {
+          padding: 20px 16px;
+          border-radius: 8px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-compare-col-main,
+        .bi-mode-jet-page .bi-mode-jet-compare-col-alt {
+          display: none;
+          padding: 20px 0 0;
+          background: transparent;
+        }
+
+        .bi-mode-jet-page
+          .bi-mode-jet-compare-table[data-active-compare="main"]
+          .bi-mode-jet-compare-col-main,
+        .bi-mode-jet-page
+          .bi-mode-jet-compare-table[data-active-compare="alt"]
+          .bi-mode-jet-compare-col-alt {
+          display: block;
+        }
+
         .bi-mode-jet-page .bi-mode-jet-hero {
-          padding-top: 220px;
+          padding-top: 116px;
+        }
+      }
+
+      .bi-mode-jet-page h2.bi-mode-jet-gradient-heading,
+      .bi-mode-jet-page h2.bi-mode-jet-light-gradient-heading {
+        background-size: 180% 180%;
+        animation:
+          bi-mode-jet-hero-gradient-flow 12s ease-in-out infinite,
+          bi-mode-jet-hero-gradient-breathe 7.2s ease-in-out infinite;
+        will-change: background-position, filter;
+      }
+
+      .bi-mode-jet-page .bi-mode-jet-faq-body {
+        display: grid;
+        grid-template-rows: 0fr;
+        padding: 0 24px 0 0;
+        opacity: 0;
+        transition:
+          grid-template-rows 0.32s ease,
+          padding-bottom 0.32s ease,
+          opacity 0.24s ease;
+      }
+
+      .bi-mode-jet-page .bi-mode-jet-faq-body > * {
+        overflow: hidden;
+      }
+
+      .bi-mode-jet-page .bi-mode-jet-faq-body p {
+        transform: translateY(-8px);
+        transition: transform 0.32s ease;
+      }
+
+      .bi-mode-jet-page .bi-mode-jet-faq-item.is-open .bi-mode-jet-faq-body {
+        grid-template-rows: 1fr;
+        padding-bottom: 32px;
+        opacity: 1;
+      }
+
+      .bi-mode-jet-page .bi-mode-jet-faq-item.is-open .bi-mode-jet-faq-body p {
+        transform: translateY(0);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .bi-mode-jet-page h2.bi-mode-jet-gradient-heading,
+        .bi-mode-jet-page h2.bi-mode-jet-light-gradient-heading,
+        .bi-mode-jet-page .bi-mode-jet-faq-body,
+        .bi-mode-jet-page .bi-mode-jet-faq-body p {
+          animation: none;
+          transition: none;
+          filter: none;
         }
       }
     </style>
@@ -659,7 +1052,34 @@
             </div>
           </div>
 
-          <div class="bi-mode-jet-compare-table">
+          <div
+            class="bi-mode-jet-compare-tabs"
+            role="tablist"
+            aria-label="Compare products"
+          >
+            <button
+              class="bi-mode-jet-compare-tab is-active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              tabindex="0"
+              data-compare-target="main"
+            >
+              Bi-Mode Jet
+            </button>
+            <button
+              class="bi-mode-jet-compare-tab"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              tabindex="-1"
+              data-compare-target="alt"
+            >
+              AeroJet
+            </button>
+          </div>
+
+          <div class="bi-mode-jet-compare-table" data-active-compare="main">
             <div class="bi-mode-jet-compare-col bi-mode-jet-compare-col-labels">
               <h3>Specifications</h3>
               <ul>
@@ -828,7 +1248,9 @@
             <div
               class="bi-mode-jet-review-fade bi-mode-jet-review-fade-right"
             ></div>
-            <div class="bi-mode-jet-review-marquee-row bi-mode-jet-review-marquee-row-left">
+            <div
+              class="bi-mode-jet-review-marquee-row bi-mode-jet-review-marquee-row-left"
+            >
               <div class="bi-mode-jet-review-marquee-track">
                 <article class="bi-mode-jet-quote-card">
                   <div class="bi-mode-jet-quote-card-header">
@@ -859,8 +1281,8 @@
                   />
                   <p>
                     Traditional air abrasion handpieces often interrupted
-                    procedures due to clogging. With Bi-Mode Jet, the powder flow
-                    remains consistent, and switching modes is seamless.
+                    procedures due to clogging. With Bi-Mode Jet, the powder
+                    flow remains consistent, and switching modes is seamless.
                   </p>
                 </article>
 
@@ -927,8 +1349,8 @@
                   />
                   <p>
                     Our team adapted to Bi-Mode Jet almost immediately. It&#39;s
-                    intuitive, efficient, and far more reliable than other systems
-                    we&#39;ve used.
+                    intuitive, efficient, and far more reliable than other
+                    systems we&#39;ve used.
                   </p>
                 </article>
 
@@ -962,7 +1384,8 @@
                   <p>
                     Clogging used to be a frequent issue during air abrasion
                     procedures. Since switching to Bi-Mode Jet, the powder flow
-                    has been consistent, and procedures feel far more controlled.
+                    has been consistent, and procedures feel far more
+                    controlled.
                   </p>
                 </article>
               </div>
@@ -997,8 +1420,8 @@
                   />
                   <p>
                     Traditional air abrasion handpieces often interrupted
-                    procedures due to clogging. With Bi-Mode Jet, the powder flow
-                    remains consistent, and switching modes is seamless.
+                    procedures due to clogging. With Bi-Mode Jet, the powder
+                    flow remains consistent, and switching modes is seamless.
                   </p>
                 </article>
 
@@ -1065,8 +1488,8 @@
                   />
                   <p>
                     Our team adapted to Bi-Mode Jet almost immediately. It&#39;s
-                    intuitive, efficient, and far more reliable than other systems
-                    we&#39;ve used.
+                    intuitive, efficient, and far more reliable than other
+                    systems we&#39;ve used.
                   </p>
                 </article>
 
@@ -1100,13 +1523,16 @@
                   <p>
                     Clogging used to be a frequent issue during air abrasion
                     procedures. Since switching to Bi-Mode Jet, the powder flow
-                    has been consistent, and procedures feel far more controlled.
+                    has been consistent, and procedures feel far more
+                    controlled.
                   </p>
                 </article>
               </div>
             </div>
 
-            <div class="bi-mode-jet-review-marquee-row bi-mode-jet-review-marquee-row-right">
+            <div
+              class="bi-mode-jet-review-marquee-row bi-mode-jet-review-marquee-row-right"
+            >
               <div class="bi-mode-jet-review-marquee-track">
                 <article class="bi-mode-jet-quote-card">
                   <div class="bi-mode-jet-quote-card-header">
@@ -1239,8 +1665,8 @@
                   />
                   <p>
                     My patients are more comfortable during stain removal
-                    procedures. Reduced procedure time and smoother operation make
-                    a noticeable difference.
+                    procedures. Reduced procedure time and smoother operation
+                    make a noticeable difference.
                   </p>
                 </article>
               </div>
@@ -1377,8 +1803,8 @@
                   />
                   <p>
                     My patients are more comfortable during stain removal
-                    procedures. Reduced procedure time and smoother operation make
-                    a noticeable difference.
+                    procedures. Reduced procedure time and smoother operation
+                    make a noticeable difference.
                   </p>
                 </article>
               </div>
@@ -1581,7 +2007,7 @@
                 class="bi-mode-jet-pill bi-mode-jet-pill-solid"
                 type="button"
               >
-                Get in Touch
+                Get In Touch
               </button>
             </div>
             <img
@@ -1638,7 +2064,41 @@
       var kaunsaCopy = document.querySelector(".bi-mode-jet-kaunsa-copy");
       var boxLists = document.querySelectorAll(".bi-mode-jet-box-list");
       var compareTable = document.querySelector(".bi-mode-jet-compare-table");
+      var compareTabButtons = document.querySelectorAll(
+        ".bi-mode-jet-compare-tab",
+      );
       var compareDesktopQuery = window.matchMedia("(min-width: 1280px)");
+      var compareMobileQuery = window.matchMedia("(max-width: 767px)");
+
+      function getActiveCompareTarget() {
+        if (!compareTable) {
+          return "main";
+        }
+
+        return compareTable.getAttribute("data-active-compare") === "alt"
+          ? "alt"
+          : "main";
+      }
+
+      function setActiveCompareTarget(target) {
+        if (!compareTable) {
+          return;
+        }
+
+        var nextTarget = target === "alt" ? "alt" : "main";
+        compareTable.setAttribute("data-active-compare", nextTarget);
+
+        compareTabButtons.forEach(function (button) {
+          var isActive =
+            button.getAttribute("data-compare-target") === nextTarget;
+
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-selected", isActive ? "true" : "false");
+          button.setAttribute("tabindex", isActive ? "0" : "-1");
+        });
+
+        alignCompareTable();
+      }
 
       function updateKaunsaReveal() {
         if (!kaunsaCopy) {
@@ -1646,7 +2106,8 @@
         }
 
         var rect = kaunsaCopy.getBoundingClientRect();
-        var viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+        var viewportHeight =
+          window.innerHeight || document.documentElement.clientHeight;
         var start = viewportHeight * 0.86;
         var end = -rect.height * 0.18;
         var progress = clamp((start - rect.top) / (start - end), 0, 1);
@@ -1655,11 +2116,11 @@
 
         kaunsaCopy.style.setProperty(
           "--bi-mode-jet-kaunsa-pretitle-progress",
-          (pretitleProgress * 100).toFixed(2) + "%"
+          (pretitleProgress * 100).toFixed(2) + "%",
         );
         kaunsaCopy.style.setProperty(
           "--bi-mode-jet-kaunsa-title-progress",
-          titleProgress.toFixed(3)
+          titleProgress.toFixed(3),
         );
       }
 
@@ -1669,7 +2130,7 @@
         }
 
         var columns = Array.prototype.slice.call(
-          compareTable.querySelectorAll(".bi-mode-jet-compare-col ul")
+          compareTable.querySelectorAll(".bi-mode-jet-compare-col ul"),
         );
 
         if (columns.length !== 3) {
@@ -1679,7 +2140,6 @@
         var rows = columns.map(function (column) {
           return Array.prototype.slice.call(column.children);
         });
-        var rowCount = rows[0].length;
 
         rows.forEach(function (items) {
           items.forEach(function (item) {
@@ -1687,27 +2147,44 @@
           });
         });
 
-        if (!compareDesktopQuery.matches) {
+        var activeRows;
+
+        if (compareDesktopQuery.matches) {
+          activeRows = rows;
+        } else if (compareMobileQuery.matches) {
+          activeRows = [
+            rows[0],
+            getActiveCompareTarget() === "alt" ? rows[2] : rows[1],
+          ];
+        } else {
           return;
         }
+
+        var rowCount = activeRows[0].length;
 
         for (var index = 0; index < rowCount; index += 1) {
           var maxHeight = 0;
 
-          rows.forEach(function (items) {
+          activeRows.forEach(function (items) {
             maxHeight = Math.max(maxHeight, items[index].offsetHeight);
           });
 
-          rows.forEach(function (items) {
+          activeRows.forEach(function (items) {
             items[index].style.minHeight = maxHeight + "px";
           });
         }
       }
 
+      compareTabButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          setActiveCompareTarget(button.getAttribute("data-compare-target"));
+        });
+      });
+
       var howToSection = document.querySelector(".bi-mode-jet-how-to");
       var howToCards = howToSection
         ? Array.prototype.slice.call(
-            howToSection.querySelectorAll(".bi-mode-jet-step-card")
+            howToSection.querySelectorAll(".bi-mode-jet-step-card"),
           )
         : [];
       var howToDesktopQuery = window.matchMedia("(min-width: 992px)");
@@ -1718,7 +2195,9 @@
         }
 
         if (!howToDesktopQuery.matches) {
-          howToSection.style.removeProperty("--bi-mode-jet-how-to-scroll-height");
+          howToSection.style.removeProperty(
+            "--bi-mode-jet-how-to-scroll-height",
+          );
           howToCards.forEach(function (card) {
             card.style.removeProperty("--bi-mode-jet-step-y");
             card.style.removeProperty("--bi-mode-jet-step-scale");
@@ -1739,7 +2218,7 @@
 
         howToSection.style.setProperty(
           "--bi-mode-jet-how-to-scroll-height",
-          scrollHeight + "px"
+          scrollHeight + "px",
         );
       }
 
@@ -1751,7 +2230,7 @@
         var rect = howToSection.getBoundingClientRect();
         var scrollRange = Math.max(
           howToSection.offsetHeight - window.innerHeight,
-          1
+          1,
         );
         var progress = clamp(-rect.top / scrollRange, 0, 1);
         var transitions = Math.max(howToCards.length - 1, 1);
@@ -1761,7 +2240,7 @@
         var rawPhase = progress * transitions * cycleSpan;
         var completedTransitions = Math.min(
           Math.floor(rawPhase / cycleSpan),
-          transitions
+          transitions,
         );
         var phaseInCycle = rawPhase - completedTransitions * cycleSpan;
         var revealProgress =
@@ -1770,7 +2249,7 @@
             : clamp(phaseInCycle / revealSpan, 0, 1);
         var sequence = Math.min(
           completedTransitions + revealProgress,
-          transitions
+          transitions,
         );
 
         howToCards.forEach(function (card, index) {
@@ -1803,22 +2282,16 @@
           }
 
           card.style.setProperty("--bi-mode-jet-step-y", y.toFixed(2) + "px");
-          card.style.setProperty(
-            "--bi-mode-jet-step-scale",
-            scale.toFixed(3)
-          );
+          card.style.setProperty("--bi-mode-jet-step-scale", scale.toFixed(3));
           card.style.setProperty(
             "--bi-mode-jet-step-opacity",
-            opacity.toFixed(3)
+            opacity.toFixed(3),
           );
           card.style.setProperty(
             "--bi-mode-jet-step-blur",
-            blur.toFixed(2) + "px"
+            blur.toFixed(2) + "px",
           );
-          card.style.setProperty(
-            "--bi-mode-jet-step-fill",
-            fill.toFixed(3)
-          );
+          card.style.setProperty("--bi-mode-jet-step-fill", fill.toFixed(3));
           card.style.zIndex = String(zIndex - index);
         });
       }
@@ -1828,14 +2301,33 @@
         updateHowToCards();
       }
 
+      var navSection = document.querySelector(".bi-mode-jet-nav-section");
+      var heroSection = document.querySelector(".bi-mode-jet-hero");
+
+      function updateNavState() {
+        if (!navSection || !heroSection) {
+          return;
+        }
+
+        var heroBottom = heroSection.getBoundingClientRect().bottom;
+        var navHeight = navSection.offsetHeight;
+
+        navSection.classList.toggle("is-scrolled", heroBottom <= navHeight);
+      }
+
       syncHowToScrollState();
+      setActiveCompareTarget(getActiveCompareTarget());
+      updateNavState();
       updateKaunsaReveal();
       alignCompareTable();
       window.addEventListener("load", syncHowToScrollState);
+      window.addEventListener("load", updateNavState);
       window.addEventListener("load", updateKaunsaReveal);
       window.addEventListener("load", alignCompareTable);
+      window.addEventListener("scroll", updateNavState, { passive: true });
       window.addEventListener("scroll", updateHowToCards, { passive: true });
       window.addEventListener("scroll", updateKaunsaReveal, { passive: true });
+      window.addEventListener("resize", updateNavState);
       window.addEventListener("resize", syncHowToScrollState);
       window.addEventListener("resize", updateKaunsaReveal);
       window.addEventListener("resize", alignCompareTable);
@@ -1849,9 +2341,14 @@
       } else if (typeof compareDesktopQuery.addListener === "function") {
         compareDesktopQuery.addListener(alignCompareTable);
       }
+      if (typeof compareMobileQuery.addEventListener === "function") {
+        compareMobileQuery.addEventListener("change", alignCompareTable);
+      } else if (typeof compareMobileQuery.addListener === "function") {
+        compareMobileQuery.addListener(alignCompareTable);
+      }
 
       var indicationCopies = document.querySelectorAll(
-        ".bi-mode-jet-indication-copy"
+        ".bi-mode-jet-indication-copy",
       );
 
       if ("IntersectionObserver" in window) {
@@ -1869,7 +2366,7 @@
           {
             threshold: 0.35,
             rootMargin: "0px 0px -10% 0px",
-          }
+          },
         );
 
         indicationCopies.forEach(function (copy) {
@@ -1896,7 +2393,7 @@
           {
             threshold: 0.3,
             rootMargin: "0px 0px -10% 0px",
-          }
+          },
         );
 
         boxLists.forEach(function (list) {

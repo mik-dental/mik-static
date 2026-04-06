@@ -9433,7 +9433,13 @@ a {
 .bi-mode-jet-page .bi-mode-jet-compare-top {
   display: grid;
   grid-template-columns: 615px 1fr;
-  align-items: center;
+  align-items: end;
+}
+
+.bi-mode-jet-page .bi-mode-jet-compare-doctor {
+  position: relative;
+  z-index: 2;
+  margin-bottom: -26px;
 }
 
 .bi-mode-jet-page .bi-mode-jet-compare-doctor img {
@@ -9707,7 +9713,7 @@ a {
   flex: 1;
 }
 
-.bi-mode-jet-page .bi-mode-jet-quote-card-header img:last-child {
+.bi-mode-jet-page .bi-mode-jet-quote-card-header > img:last-child {
   display: block;
   width: 22px;
   height: auto;
@@ -9742,7 +9748,7 @@ a {
   line-height: 1.15;
 }
 
-.bi-mode-jet-page .bi-mode-jet-quote-card-header img[alt="5 stars"] {
+.bi-mode-jet-page .bi-mode-jet-quote-card-header > div img {
   display: block;
   width: 98px;
   height: auto;
