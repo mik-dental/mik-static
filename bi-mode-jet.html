@@ -68,8 +68,13 @@
         display: flex;
         justify-content: center;
         padding: 12px 0;
-        background-color: transparent;
-        transition: background-color 0.32s ease;
+        background-color: rgba(
+          25,
+          37,
+          60,
+          var(--bi-mode-jet-nav-bg-opacity, 0)
+        );
+        transition: background-color 0.14s linear;
       }
 
       .bi-mode-jet-page .bi-mode-jet-nav-section.is-scrolled {
@@ -80,8 +85,72 @@
         margin-top: 0;
       }
 
+      .bi-mode-jet-page .bi-mode-jet-hero-credit-prefix {
+        display: none;
+        margin: 0 0 8px;
+      }
+
       .bi-mode-jet-page .bi-mode-jet-compare-tabs {
         display: none;
+      }
+
+      @media screen and (max-width: 991px) {
+        .bi-mode-jet-page .bi-mode-jet-hero-doctor,
+        .bi-mode-jet-page .bi-mode-jet-animation {
+          display: none;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero {
+          padding-top: 72px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-inner {
+          min-height: calc(100svh - 72px);
+          align-items: center;
+          justify-content: flex-start;
+          gap: 24px;
+          padding-bottom: 0;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-copy {
+          display: flex;
+          flex-direction: column;
+          width: min(100%, 560px);
+          margin: 84px auto 0;
+          gap: 24px;
+          text-align: center;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-credit {
+          position: relative;
+          right: auto;
+          bottom: auto;
+          z-index: 2;
+          width: min(100%, 420px);
+          margin: 0 auto;
+          opacity: 0.9;
+          text-align: center;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-credit-prefix {
+          display: block;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 1.2;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-skeleton {
+          position: absolute;
+          left: calc(50% - 60vw);
+          bottom: 0;
+          display: block;
+          width: 120vw;
+          max-width: none;
+          height: auto;
+          margin: 0;
+          object-fit: cover;
+          object-position: center bottom;
+        }
       }
 
       @media screen and (max-width: 767px) {
@@ -127,10 +196,50 @@
           min-width: 104px;
         }
 
-        .bi-mode-jet-page .bi-mode-jet-hero-credit,
         .bi-mode-jet-page .bi-mode-jet-hero-doctor,
         .bi-mode-jet-page .bi-mode-jet-animation {
           display: none;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-copy {
+          width: min(100%, 348px);
+          margin: 100px auto 0;
+          gap: 28px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-copy h1 {
+          font-size: 62px;
+          line-height: 0.94;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-subtitle {
+          justify-content: center;
+          gap: 6px;
+          font-size: 24px;
+          line-height: 1.15;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-credit {
+          width: min(100%, 320px);
+          margin: 0 auto 8px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-credit-prefix {
+          font-size: 16px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-credit-name {
+          font-size: 24px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-credit-role {
+          margin-top: 8px;
+          font-size: 18px;
+        }
+
+        .bi-mode-jet-page .bi-mode-jet-hero-skeleton {
+          left: calc(50% - 75vw);
+          width: 150vw;
         }
 
         .bi-mode-jet-page .bi-mode-jet-story-cards {
@@ -516,6 +625,7 @@
             </p>
           </div>
           <div class="bi-mode-jet-hero-credit" data-node-id="777:313">
+            <p class="bi-mode-jet-hero-credit-prefix">By</p>
             <p class="bi-mode-jet-hero-credit-name">Dr. Moez I. Khakiani</p>
             <p class="bi-mode-jet-hero-credit-role">
               Renowned Prosthodontist and Mentor
@@ -563,97 +673,34 @@
       </section>
 
       <section class="bi-mode-jet-description" data-node-id="777:332">
-        <div class="bi-mode-jet-description-device-wrap">
+        <div class="bi-mode-jet-description-desktop">
           <img
-            src="./assets/bi-mode/front.webp"
+            src="./assets/bi-mode/Description.png"
             loading="lazy"
-            alt="Bi-Mode Jet side profile"
-            class="bi-mode-jet-description-device"
+            alt="Bi-Mode Jet feature overview"
+            class="bi-mode-jet-description-desktop-image"
           />
         </div>
 
-        <div class="bi-mode-jet-callout bi-mode-jet-callout-top-left">
-          <p>
-            Genius Independent Water Nozzle That
-            <br />
-            Prevents Clogging During Wet Use
-          </p>
-          <img
-            src="./assets/bi-mode-jet-callout-line-1.svg"
-            loading="lazy"
-            alt=""
-            class="bi-mode-jet-callout-line"
-          />
-          <span class="bi-mode-jet-callout-box"></span>
-          <img
-            src="./assets/bi-mode-jet-callout-dot.svg"
-            loading="lazy"
-            alt=""
-            class="bi-mode-jet-callout-dot"
-          />
-        </div>
+        <div class="bi-mode-jet-description-mobile">
+          <div class="bi-mode-jet-description-device-wrap">
+            <img
+              src="./assets/bi-mode/front.png"
+              loading="lazy"
+              alt="Bi-Mode Jet side profile"
+              class="bi-mode-jet-description-device"
+            />
+          </div>
 
-        <div class="bi-mode-jet-callout bi-mode-jet-callout-bottom-left">
-          <p>
-            Dual-Mode Design for Both
-            <br />
-            Air Abrasion and Polishing
-          </p>
-          <img
-            src="./assets/bi-mode-jet-callout-line-4.svg"
-            loading="lazy"
-            alt=""
-            class="bi-mode-jet-callout-line"
-          />
-          <span class="bi-mode-jet-callout-box"></span>
-          <img
-            src="./assets/bi-mode-jet-callout-dot.svg"
-            loading="lazy"
-            alt=""
-            class="bi-mode-jet-callout-dot"
-          />
-        </div>
-
-        <div class="bi-mode-jet-callout bi-mode-jet-callout-top-right">
-          <p>
-            Compatible With Aluminum
-            <br />
-            Oxide &amp; Bicarbonate Powders
-          </p>
-          <img
-            src="./assets/bi-mode-jet-callout-line-3.svg"
-            loading="lazy"
-            alt=""
-            class="bi-mode-jet-callout-line"
-          />
-          <span class="bi-mode-jet-callout-box"></span>
-          <img
-            src="./assets/bi-mode-jet-callout-dot.svg"
-            loading="lazy"
-            alt=""
-            class="bi-mode-jet-callout-dot"
-          />
-        </div>
-
-        <div class="bi-mode-jet-callout bi-mode-jet-callout-bottom-right">
-          <p>
-            High Grade German
-            <br />
-            Steel Body
-          </p>
-          <img
-            src="./assets/bi-mode-jet-callout-line-2.svg"
-            loading="lazy"
-            alt=""
-            class="bi-mode-jet-callout-line"
-          />
-          <span class="bi-mode-jet-callout-box"></span>
-          <img
-            src="./assets/bi-mode-jet-callout-dot.svg"
-            loading="lazy"
-            alt=""
-            class="bi-mode-jet-callout-dot"
-          />
+          <ul class="bi-mode-jet-description-pointers">
+            <li>Dual-Mode Design for Both Air Abrasion and Polishing</li>
+            <li>High Grade German Steel Body</li>
+            <li>Compatible With Aluminum Oxide &amp; Bicarbonate Powders</li>
+            <li>
+              Genius Independent Water Nozzle That Prevents Clogging During Wet
+              Use
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -2348,16 +2395,36 @@
 
       var navSection = document.querySelector(".bi-mode-jet-nav-section");
       var heroSection = document.querySelector(".bi-mode-jet-hero");
+      var pageRoot = document.body;
+
+      function revealHero() {
+        if (!pageRoot || pageRoot.classList.contains("is-hero-loaded")) {
+          return;
+        }
+
+        window.requestAnimationFrame(function () {
+          pageRoot.classList.add("is-hero-loaded");
+        });
+      }
 
       function updateNavState() {
         if (!navSection || !heroSection) {
           return;
         }
 
-        var heroBottom = heroSection.getBoundingClientRect().bottom;
         var navHeight = navSection.offsetHeight;
+        var heroHeight = heroSection.offsetHeight;
+        var fadeDistance = 140;
+        var fadeStart = Math.max(heroHeight - navHeight, 0);
+        var opacity = (window.scrollY - fadeStart) / fadeDistance;
 
-        navSection.classList.toggle("is-scrolled", heroBottom <= navHeight);
+        opacity = Math.max(0, Math.min(1, opacity));
+
+        navSection.style.setProperty(
+          "--bi-mode-jet-nav-bg-opacity",
+          opacity.toFixed(3),
+        );
+        navSection.classList.toggle("is-scrolled", opacity >= 0.999);
       }
 
       syncHowToScrollState();
@@ -2365,10 +2432,16 @@
       updateNavState();
       updateKaunsaReveal();
       alignCompareTable();
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        revealHero();
+      } else if (document.readyState === "complete") {
+        revealHero();
+      }
       window.addEventListener("load", syncHowToScrollState);
       window.addEventListener("load", updateNavState);
       window.addEventListener("load", updateKaunsaReveal);
       window.addEventListener("load", alignCompareTable);
+      window.addEventListener("load", revealHero);
       window.addEventListener("scroll", updateNavState, { passive: true });
       window.addEventListener("scroll", updateHowToCards, { passive: true });
       window.addEventListener("scroll", updateKaunsaReveal, { passive: true });
