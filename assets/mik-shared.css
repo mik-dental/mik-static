@@ -9261,6 +9261,17 @@ a {
   line-height: 1.5;
 }
 
+@keyframes bi-mode-jet-mobile-step-stack-fade {
+  0%,
+  58% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
 @media screen and (min-width: 992px) {
   .bi-mode-jet-page .bi-mode-jet-how-to {
     --bi-mode-jet-how-to-scroll-height: 1800px;
@@ -9302,6 +9313,10 @@ a {
   .bi-mode-jet-page .bi-mode-jet-step-card,
   .bi-mode-jet-page .bi-mode-jet-step-card::before {
     transition: none;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card {
+    animation: none;
   }
 }
 
@@ -10256,6 +10271,83 @@ a {
 
   .bi-mode-jet-page .bi-mode-jet-story-card-media {
     min-height: 280px;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-how-to-inner {
+    gap: 20px;
+    align-items: start;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-how-to-media {
+    position: sticky;
+    top: 65px;
+    z-index: 2;
+    align-self: start;
+    background: #19253c;
+    padding-bottom: 16px;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-how-to-media h2 {
+    padding-bottom: 0;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-how-to-media video {
+    margin-top: 70px;
+    width: 75%;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-how-to-steps {
+    gap: 12px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card {
+    position: sticky;
+    top: calc(100svh - 220px);
+    padding: 24px 20px;
+    box-shadow: 0 18px 40px rgba(4, 12, 30, 0.18);
+  }
+
+  @supports (animation-timeline: view(block)) {
+    .bi-mode-jet-page .bi-mode-jet-step-card {
+      animation: bi-mode-jet-mobile-step-stack-fade linear both;
+      animation-timeline: view(block);
+      animation-range: entry 0% exit 70%;
+    }
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card:nth-child(2) {
+    top: calc(100svh - 208px);
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card:nth-child(3) {
+    top: calc(100svh - 196px);
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card:nth-child(4) {
+    top: calc(100svh - 184px);
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card:nth-child(5) {
+    top: calc(100svh - 172px);
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card:nth-child(6) {
+    top: calc(100svh - 160px);
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card:nth-child(7) {
+    top: calc(100svh - 148px);
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card h3 {
+    font-size: 28px;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-step-card p {
+    margin-top: 16px;
+    font-size: 16px;
   }
 
   .bi-mode-jet-page .bi-mode-jet-indication-copy ul {
