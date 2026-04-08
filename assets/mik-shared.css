@@ -8392,7 +8392,10 @@ a {
   font-size: 20px;
   font-weight: 500;
   line-height: 1.5;
-  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease,
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
     border-color 0.2s ease;
   cursor: pointer;
 }
@@ -8462,6 +8465,7 @@ a {
   margin-top: -106px;
   padding-top: 106px;
   background: var(--bi-mode-jet-bg);
+  overflow: hidden;
 }
 
 .bi-mode-jet-page .bi-mode-jet-hero-inner {
@@ -8472,7 +8476,7 @@ a {
 
 .bi-mode-jet-page .bi-mode-jet-hero-copy {
   position: absolute;
-  top: 240px;
+  top: 140px;
   left: 0;
   z-index: 2;
 }
@@ -8574,16 +8578,19 @@ a {
 
 .bi-mode-jet-page .bi-mode-jet-hero-skeleton {
   position: absolute;
-  left: -40px;
-  bottom: -138px;
-  width: min(52vw, 691px);
-  opacity: 0.75;
-  transform: rotate(164deg);
+  left: -36px;
+  bottom: 0;
+  display: block;
+  width: min(68vw, 920px);
+  height: auto;
+  opacity: 0.9;
+  object-fit: contain;
 }
 
 .bi-mode-jet-page .bi-mode-jet-animation {
   position: relative;
-  min-height: 1473px;
+  min-height: 100svh;
+  height: 100svh;
   background: radial-gradient(circle at center, #2b3850 0%, #19253c 66%);
   overflow: clip;
 }
@@ -8592,16 +8599,28 @@ a {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at center, rgba(117, 148, 217, 0.12), transparent 44%),
-    radial-gradient(circle at center, rgba(16, 23, 37, 0), rgba(16, 23, 37, 0.22) 100%);
+    radial-gradient(
+      circle at center,
+      rgba(117, 148, 217, 0.12),
+      transparent 44%
+    ),
+    radial-gradient(
+      circle at center,
+      rgba(16, 23, 37, 0),
+      rgba(16, 23, 37, 0.22) 100%
+    );
 }
 
 .bi-mode-jet-page .bi-mode-jet-animation-image {
   position: absolute;
-  top: 102px;
-  left: 50%;
+  inset: 0;
+  margin: auto;
   width: min(50vw, 646px);
-  transform: translateX(-5%) rotate(180deg);
+  max-width: calc(100vw - 64px);
+  max-height: min(72vh, 720px);
+  display: block;
+  object-fit: contain;
+  transform: none;
 }
 
 .bi-mode-jet-page .bi-mode-jet-description {
@@ -8629,7 +8648,7 @@ a {
 
 .bi-mode-jet-page .bi-mode-jet-description-device {
   width: 100%;
-  transform: rotate(135deg) scale(0.92);
+  transform: rotate(10deg) scale(0.92);
   opacity: 0.96;
 }
 
@@ -8963,15 +8982,18 @@ a {
   position: relative;
 }
 
-.bi-mode-jet-page .bi-mode-jet-indication-media-dry img:first-child {
+.bi-mode-jet-page
+  .bi-mode-jet-indication-media-dry
+  :is(img, video):first-child {
   display: block;
   width: 100%;
 }
 
-.bi-mode-jet-page .bi-mode-jet-indication-media-wet img:first-child {
+.bi-mode-jet-page
+  .bi-mode-jet-indication-media-wet
+  :is(img, video):first-child {
   display: block;
   width: 100%;
-  transform: rotate(-90deg) translateY(-22px);
 }
 
 .bi-mode-jet-page .bi-mode-jet-shadow {
@@ -9022,10 +9044,18 @@ a {
   inset: 0;
   z-index: -1;
   background:
-    radial-gradient(circle at 12% 18%, rgba(110, 168, 255, 0.28), transparent 34%),
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(110, 168, 255, 0.28),
+      transparent 34%
+    ),
     linear-gradient(42deg, #213251 4%, #34538f 152%);
-  background-size: 140% 140%, 100% 100%;
-  background-position: 0% 0%, 0 0;
+  background-size:
+    140% 140%,
+    100% 100%;
+  background-position:
+    0% 0%,
+    0 0;
   opacity: 0;
   transform: scale(1.02);
   transition:
@@ -9051,7 +9081,9 @@ a {
   .bi-mode-jet-page .bi-mode-jet-benefit-card:focus-within::before {
     opacity: 1;
     transform: scale(1);
-    background-position: 100% 100%, 0 0;
+    background-position:
+      100% 100%,
+      0 0;
   }
 
   .bi-mode-jet-page .bi-mode-jet-benefit-card:hover p,
@@ -9280,12 +9312,19 @@ a {
   transition: opacity 0.55s ease;
 }
 
-.w-mod-js .bi-mode-jet-page .bi-mode-jet-box-list.is-visible .bi-mode-jet-box-item {
+.w-mod-js
+  .bi-mode-jet-page
+  .bi-mode-jet-box-list.is-visible
+  .bi-mode-jet-box-item {
   opacity: 1;
   transform: translateY(0);
 }
 
-.w-mod-js .bi-mode-jet-page .bi-mode-jet-box-list.is-visible .bi-mode-jet-box-item img {
+.w-mod-js
+  .bi-mode-jet-page
+  .bi-mode-jet-box-list.is-visible
+  .bi-mode-jet-box-item
+  img {
   opacity: 1;
 }
 
@@ -9322,7 +9361,7 @@ a {
   height: 1px;
 }
 
-.bi-mode-jet-page .bi-mode-jet-box-media img {
+.bi-mode-jet-page .bi-mode-jet-box-media :is(img, video) {
   display: block;
   width: 100%;
 }
@@ -9549,11 +9588,17 @@ a {
   border-radius: 16px;
 }
 
-.bi-mode-jet-page .bi-mode-jet-review-video-large .bi-mode-jet-review-video-frame::after {
+.bi-mode-jet-page
+  .bi-mode-jet-review-video-large
+  .bi-mode-jet-review-video-frame::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 46%, rgba(0, 0, 0, 0.8) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 46%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
 }
 
 .bi-mode-jet-page .bi-mode-jet-review-video-frame img:first-child {
@@ -10088,14 +10133,15 @@ a {
   }
 
   .bi-mode-jet-page .bi-mode-jet-animation {
-    min-height: 820px;
+    min-height: 100svh;
+    height: 100svh;
   }
 
   .bi-mode-jet-page .bi-mode-jet-animation-image {
     display: block;
     margin: 0 auto;
     width: min(520px, 90vw);
-    transform: rotate(180deg);
+    transform: none;
   }
 
   .bi-mode-jet-page .bi-mode-jet-manual-media {
@@ -10221,4 +10267,52 @@ a {
     flex-wrap: wrap;
     gap: 16px;
   }
+}
+
+@media screen and (min-width: 768px) {
+  .bi-mode-jet-page .bi-mode-jet-hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-top: 0;
+    z-index: 0;
+  }
+
+  .bi-mode-jet-page
+    .bi-mode-jet-shell
+    > section:not(.bi-mode-jet-nav-section):not(.bi-mode-jet-hero),
+  .bi-mode-jet-page .bi-mode-jet-shell > footer {
+    position: relative;
+    z-index: 1;
+    isolation: isolate;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-animation {
+    margin-top: 100svh;
+  }
+
+  .bi-mode-jet-page .bi-mode-jet-animation-image {
+    width: min(75vw, 969px);
+    max-width: calc(100vw - 48px);
+    max-height: min(84vh, 960px);
+  }
+}
+
+.bi-mode-jet-page .bi-mode-jet-story,
+.bi-mode-jet-page .bi-mode-jet-benefits,
+.bi-mode-jet-page .bi-mode-jet-how-to,
+.bi-mode-jet-page .bi-mode-jet-box-section {
+  background: #19253c;
+}
+
+.bi-mode-jet-page .bi-mode-jet-kaunsa,
+.bi-mode-jet-page .bi-mode-jet-compare,
+.bi-mode-jet-page .bi-mode-jet-faq {
+  background: #f5f3ef;
+}
+
+.bi-mode-jet-page .bi-mode-jet-manual,
+.bi-mode-jet-page .bi-mode-jet-reviews {
+  background: #fff;
 }
