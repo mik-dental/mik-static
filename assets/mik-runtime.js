@@ -63,6 +63,48 @@
     );
   }
 
+  function getLottieLoopMode(element, loop) {
+    const mode = (element.dataset.loopMode || "").toLowerCase();
+
+    if (
+      mode === "pingpong" ||
+      mode === "alternate" ||
+      mode === "reverse-loop"
+    ) {
+      return "pingpong";
+    }
+
+    return loop ? "loop" : "once";
+  }
+
+  function getLottieEdgeFrame(record) {
+    const lastFrame = Math.max(
+      Math.round(record.animation.totalFrames || 0) - 1,
+      0,
+    );
+
+    return record.playDirection === -1 ? lastFrame : 0;
+  }
+
+  function startPingPong(record, resetDirection) {
+    if (resetDirection) {
+      record.playDirection = record.initialDirection;
+    }
+
+    const edgeFrame = getLottieEdgeFrame(record);
+
+    record.animation.setDirection(record.playDirection);
+    record.animation.goToAndStop(edgeFrame, true);
+
+    window.requestAnimationFrame(() => {
+      if (!record.isVisible && !record.autoplay) {
+        return;
+      }
+
+      record.animation.play();
+    });
+  }
+
   function initLottie() {
     const registry = new Map();
 
@@ -83,7 +125,31 @@
           }
 
           if (entry.isIntersecting) {
+            record.isVisible = true;
+
             if (record.autoplay) {
+              if (record.loopMode === "pingpong") {
+                if (!record.hasPlayed) {
+                  startPingPong(record, true);
+                  record.hasPlayed = true;
+                  return;
+                }
+
+                record.animation.play();
+                return;
+              }
+
+              record.animation.play();
+              return;
+            }
+
+            if (record.loopMode === "pingpong") {
+              if (!record.hasPlayed) {
+                startPingPong(record, true);
+                record.hasPlayed = true;
+                return;
+              }
+
               record.animation.play();
               return;
             }
@@ -92,7 +158,15 @@
               record.animation.goToAndPlay(0, true);
               record.hasPlayed = true;
             }
-          } else if (!record.autoplay && record.loop) {
+          } else {
+            record.isVisible = false;
+          }
+
+          if (
+            !entry.isIntersecting &&
+            !record.autoplay &&
+            (record.loop || record.loopMode === "pingpong")
+          ) {
             record.animation.pause();
           }
         });
@@ -103,10 +177,12 @@
     elements.forEach((element) => {
       const autoplay = parseBoolean(element.dataset.autoplay);
       const loop = parseBoolean(element.dataset.loop);
+      const loopMode = getLottieLoopMode(element, loop);
+      const initialDirection = Number(element.dataset.direction) === -1 ? -1 : 1;
       const animationConfig = {
         container: element,
         renderer: element.dataset.renderer || "svg",
-        loop,
+        loop: loopMode === "loop",
         autoplay,
         rendererSettings: {
           preserveAspectRatio: "xMidYMid meet",
@@ -127,12 +203,30 @@
         animation.stop();
       }
 
-      registry.set(element, {
+      const record = {
         animation,
         autoplay,
         loop,
+        loopMode,
         hasPlayed: autoplay,
-      });
+        initialDirection,
+        playDirection: initialDirection,
+        isVisible: false,
+      };
+
+      if (loopMode === "pingpong") {
+        animation.setDirection(initialDirection);
+        animation.addEventListener("complete", () => {
+          if (!record.isVisible) {
+            return;
+          }
+
+          record.playDirection *= -1;
+          startPingPong(record, false);
+        });
+      }
+
+      registry.set(element, record);
 
       observer.observe(element);
     });
