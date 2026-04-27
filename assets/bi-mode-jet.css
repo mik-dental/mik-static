@@ -194,8 +194,9 @@
 .bi-mode-jet-page .bi-mode-jet-hero-copy {
   position: absolute;
   top: 140px;
-  left: 0;
+  right: 0;
   z-index: 2;
+  text-align: right;
 }
 
 .w-mod-js .bi-mode-jet-page .bi-mode-jet-hero-copy h1,
@@ -218,11 +219,11 @@
 }
 
 .w-mod-js .bi-mode-jet-page .bi-mode-jet-hero-doctor {
-  transform: translate3d(52px, 28px, 0) scale(0.985);
+  transform: translate3d(-52px, 28px, 0) scale(0.985);
 }
 
 .w-mod-js .bi-mode-jet-page .bi-mode-jet-hero-skeleton {
-  transform: translate3d(-52px, 28px, 0) scale(0.985);
+  transform: translate3d(52px, 28px, 0) scale(0.985);
 }
 
 .w-mod-js .bi-mode-jet-page .bi-mode-jet-hero-copy h1 {
@@ -294,6 +295,7 @@
 .bi-mode-jet-page .bi-mode-jet-hero-subtitle {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 8px;
   margin: 0;
   font-size: 28px;
@@ -361,7 +363,7 @@
 
 .bi-mode-jet-page .bi-mode-jet-hero-credit {
   position: absolute;
-  right: 2px;
+  left: 2px;
   bottom: 52px;
   z-index: 2;
   opacity: 0.8;
@@ -386,7 +388,7 @@
 
 .bi-mode-jet-page .bi-mode-jet-hero-doctor {
   position: absolute;
-  right: -216px;
+  left: -216px;
   bottom: 0;
   z-index: 1;
   width: min(81vw, 885px);
@@ -395,7 +397,7 @@
 
 .bi-mode-jet-page .bi-mode-jet-hero-skeleton {
   position: absolute;
-  left: -36px;
+  right: -36px;
   bottom: 0;
   display: block;
   width: min(68vw, 920px);
