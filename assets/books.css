@@ -1049,7 +1049,7 @@
 }
 
 @media screen and (max-width: 767px) {
-.fs_modal-2_close {
+  .fs_modal-2_close {
     padding: 1rem;
   }
 
@@ -1612,3 +1612,62 @@
     grid-template-columns: 1fr;
   }
 }
+
+.books-footer-bar {
+  background-color: #08050e;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 32px 20px 150px;
+  color: #98a2b3;
+  font-family: var(--inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+.books-footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.books-footer-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.books-footer-link {
+  color: #c4c7d4;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14.5px;
+  transition: color 0.2s ease;
+}
+
+.books-footer-link:hover {
+  color: #e48d34;
+  text-decoration: underline;
+}
+
+.books-footer-divider {
+  width: 100%;
+  max-width: 400px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.books-footer-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.books-footer-copy {
+  color: #717684;
+  font-size: 13.5px;
+}
+
+

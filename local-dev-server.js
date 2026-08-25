@@ -1,7 +1,6 @@
 const fs = require("fs");
 const http = require("http");
 const path = require("path");
-const pricesHandler = require("./api/prices");
 
 const PORT = Number(process.env.PORT || 8000);
 const HOST = process.env.HOST || "127.0.0.1";
@@ -24,73 +23,48 @@ const MIME_TYPES = {
   ".webp": "image/webp",
 };
 
-function loadEnvFile() {
-  const envPath = path.join(ROOT, ".env");
-
-  if (!fs.existsSync(envPath)) {
-    return;
-  }
-
-  fs.readFileSync(envPath, "utf8")
-    .split(/\r?\n/)
-    .forEach((line) => {
-      const trimmed = line.trim();
-
-      if (!trimmed || trimmed.startsWith("#")) {
-        return;
-      }
-
-      const equalsIndex = trimmed.indexOf("=");
-
-      if (equalsIndex === -1) {
-        return;
-      }
-
-      const key = trimmed.slice(0, equalsIndex).trim();
-      let value = trimmed.slice(equalsIndex + 1).trim();
-
-      if (
-        (value.startsWith('"') && value.endsWith('"')) ||
-        (value.startsWith("'") && value.endsWith("'"))
-      ) {
-        value = value.slice(1, -1);
-      }
-
-      if (!process.env[key]) {
-        process.env[key] = value;
-      }
-    });
-}
-
 function getStaticPath(urlPath) {
-  const cleanPath = decodeURIComponent(urlPath.split("?")[0]);
+  const cleanPath = decodeURIComponent(urlPath.split("?")[0]).replace(/\/+$/, "") || "/";
   const routes = {
     "/": "books.html",
     "/books": "books.html",
     "/torque": "torque.html",
     "/bi-mode-jet": "bi-mode-jet.html",
+    "/books/returns-and-exchange": "books/returns-and-exchange.html",
+    "/books/returns-and-exchange.html": "books/returns-and-exchange.html",
   };
   const relativePath = routes[cleanPath] || cleanPath.replace(/^\/+/, "");
-  const filePath = path.normalize(path.join(ROOT, relativePath));
+  let filePath = path.normalize(path.join(ROOT, relativePath));
 
   if (!filePath.startsWith(ROOT)) {
     return null;
   }
 
-  return filePath;
-}
-
-loadEnvFile();
-
-const server = http.createServer((req, res) => {
-  if (req.url && req.url.split("?")[0] === "/api/prices") {
-    pricesHandler(req, res);
-    return;
+  // 1. Direct file match
+  if (fs.existsSync(filePath) && !fs.statSync(filePath).isDirectory()) {
+    return filePath;
   }
 
+  // 2. Append .html match
+  if (fs.existsSync(filePath + ".html") && !fs.statSync(filePath + ".html").isDirectory()) {
+    return filePath + ".html";
+  }
+
+  // 3. Directory index.html match
+  if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+    const indexPath = path.join(filePath, "index.html");
+    if (fs.existsSync(indexPath) && !fs.statSync(indexPath).isDirectory()) {
+      return indexPath;
+    }
+  }
+
+  return null;
+}
+
+const server = http.createServer((req, res) => {
   const filePath = getStaticPath(req.url || "/");
 
-  if (!filePath || !fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
+  if (!filePath || !fs.existsSync(filePath)) {
     res.statusCode = 404;
     res.setHeader("Content-Type", "text/plain; charset=utf-8");
     res.end("Not found");
@@ -107,5 +81,4 @@ const server = http.createServer((req, res) => {
 
 server.listen(PORT, HOST, () => {
   console.log(`Local dev server running at http://${HOST}:${PORT}`);
-  console.log(`Prices API: http://${HOST}:${PORT}/api/prices`);
 });

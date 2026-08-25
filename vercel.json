@@ -22,6 +22,11 @@
       "source": "/bi-mode-jet.html",
       "destination": "/bi-mode-jet",
       "permanent": true
+    },
+    {
+      "source": "/books/returns-and-exchange.html",
+      "destination": "/books/returns-and-exchange",
+      "permanent": true
     }
   ],
   "headers": [
