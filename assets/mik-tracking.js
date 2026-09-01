@@ -6,13 +6,14 @@
   var FIRST_TOUCH_KEY = "mik_first_touch";
   var LAST_TOUCH_KEY = "mik_last_touch";
   var SESSION_TOUCH_KEY = "mik_session_touch";
-  var TRACKED_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid", "fbclid", "ttclid", "msclkid"];
-  var PRODUCT_BY_CHECKOUT_PATH = {
-    "/rzp/mikstarter": { item_id: "mikstarter", item_name: "Starter Volume", price: 2899 },
-    "/rzp/mikcombo": { item_id: "mikcombo", item_name: "Combo (Starter + Master)", price: 7999 },
-    "/rzp/mikmaster": { item_id: "mikmaster", item_name: "Master Volume", price: 5799 },
-    "/rzp/XB9bYbd": { item_id: "implatorque_versa", item_name: "Versa Torque Kit", price: 9998 },
-    "/rzp/kXnVAJlP": { item_id: "bi_mode_jet", item_name: "Bi-Mode Jet", price: null },
+  var STANDARD_UTM_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+  var TRACKED_PARAMS = STANDARD_UTM_PARAMS.concat(["gclid", "fbclid", "ttclid", "msclkid"]);
+  var CHECKOUT_BY_URL = {
+    "pages.razorpay.com/mikstarter": { item_id: "mikstarter", item_name: "Starter Volume", price: 2899, forward_utms: true },
+    "pages.razorpay.com/mikcombo": { item_id: "mikcombo", item_name: "Combo (Starter + Master)", price: 7999, forward_utms: true },
+    "pages.razorpay.com/mikmaster": { item_id: "mikmaster", item_name: "Master Volume", price: 5799, forward_utms: true },
+    "rzp.io/rzp/XB9bYbd": { item_id: "implatorque_versa", item_name: "Versa Torque Kit", price: 9998 },
+    "rzp.io/rzp/kXnVAJlP": { item_id: "bi_mode_jet", item_name: "Bi-Mode Jet", price: null },
   };
   var memoryStore = {};
 
@@ -114,6 +115,29 @@
     window.dataLayer.push(payload);
   }
 
+  function checkoutForUrl(url) {
+    return CHECKOUT_BY_URL[url.hostname.toLowerCase() + url.pathname] || null;
+  }
+
+  function decorateBooksCheckoutLink(link) {
+    var destination;
+    try { destination = new window.URL(link.href, window.location.href); } catch (error) { return; }
+    var checkout = checkoutForUrl(destination);
+    if (!checkout || !checkout.forward_utms) return;
+
+    var activeTouch = getAttribution().active_touch;
+    if (!activeTouch) return;
+    STANDARD_UTM_PARAMS.forEach(function (key) {
+      if (activeTouch[key]) destination.searchParams.set(key, activeTouch[key]);
+    });
+    link.href = destination.toString();
+  }
+
+  function decorateBooksCheckoutLinks() {
+    var links = document.querySelectorAll("a[href]");
+    Array.prototype.forEach.call(links, decorateBooksCheckoutLink);
+  }
+
   var incomingTouch = readIncomingTouch();
   var isNewTouch = Boolean(incomingTouch);
   if (incomingTouch) {
@@ -126,6 +150,12 @@
   var initialAttribution = getAttribution();
   pushEvent({ event: "mik_attribution_ready", page_path: window.location.pathname, is_new_campaign: isNewTouch, attribution: attributionPayload(initialAttribution) });
 
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", decorateBooksCheckoutLinks);
+  } else {
+    decorateBooksCheckoutLinks();
+  }
+
   document.addEventListener("click", function (event) {
     var target = event.target;
     if (!target || !target.closest) return;
@@ -133,8 +163,8 @@
     if (!link) return;
     var destination;
     try { destination = new window.URL(link.href, window.location.href); } catch (error) { return; }
-    if (destination.protocol !== "https:" || destination.hostname.toLowerCase() !== "rzp.io") return;
-    var product = PRODUCT_BY_CHECKOUT_PATH[destination.pathname];
+    if (destination.protocol !== "https:") return;
+    var product = checkoutForUrl(destination);
     if (!product) return;
 
     var configuredPrice = Number(link.getAttribute("data-product-price"));
