@@ -9,9 +9,9 @@
   var STANDARD_UTM_PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
   var TRACKED_PARAMS = STANDARD_UTM_PARAMS.concat(["gclid", "fbclid", "ttclid", "msclkid"]);
   var CHECKOUT_BY_URL = {
-    "pages.razorpay.com/mikstarter": { item_id: "mikstarter", item_name: "Starter Volume", price: 2899, forward_utms: true },
-    "pages.razorpay.com/mikcombo": { item_id: "mikcombo", item_name: "Combo (Starter + Master)", price: 7999, forward_utms: true },
-    "pages.razorpay.com/mikmaster": { item_id: "mikmaster", item_name: "Master Volume", price: 5799, forward_utms: true },
+    "pages.razorpay.com/mikstarter": { item_id: "mikstarter", item_name: "Starter Volume", price: 3999, forward_utms: true },
+    "pages.razorpay.com/mikcombo": { item_id: "mikcombo", item_name: "Combo (Starter + Master)", price: 9999, forward_utms: true },
+    "pages.razorpay.com/mikmaster": { item_id: "mikmaster", item_name: "Master Volume", price: 6999, forward_utms: true },
     "rzp.io/rzp/XB9bYbd": { item_id: "implatorque_versa", item_name: "Versa Torque Kit", price: 9998 },
     "rzp.io/rzp/kXnVAJlP": { item_id: "bi_mode_jet", item_name: "Bi-Mode Jet", price: null },
   };
